@@ -61,9 +61,9 @@ class CLI
             $this->parser = new DefaultParser();
         }
         
-        $this->stdin = STDIN;
-        $this->stdout = STDOUT;
-        $this->stderr = STDERR;
+        $this->stdin = fopen("php://stdin", "r");
+        $this->stdout = fopen("php://stdout", "w");
+        $this->stderr = fopen("php://stderr", "w");
     }
 
     /**
@@ -93,7 +93,7 @@ class CLI
     /**
      * Set a custom stderr channel
      *
-     * @param resourc $stderr            
+     * @param resource $stderr            
      * @return \Nkey\Caribu\Console\CLI
      */
     public function setStdErr($stderr)
@@ -109,8 +109,6 @@ class CLI
      */
     public function readLine()
     {
-        $input = "";
-        
         $this->writeStdout(sprintf("%s > ", $this->prompt));
         $input = stream_get_line($this->stdin, 4096, PHP_EOL);
         return $this->parser->parse(trim($input));
