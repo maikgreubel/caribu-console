@@ -15,9 +15,9 @@ matrix:
 before_script:
   - wget http://getcomposer.org/composer.phar
   - php composer.phar install --dev --no-interaction
-  - wget https://scrutinizer-ci.com/ocular.phar -O ocular.phar
   
-script:
-  - mkdir -p build/logs
-  - phpunit --coverage-clover build/logs/clover.xml
-  - php ocular.phar code-coverage:upload --format=php-clover build/logs/clover.xml
+script: phpunit --coverage-clover coverage.clover
+
+after_script:
+  - wget https://scrutinizer-ci.com/ocular.phar -O ocular.phar
+  - php ocular.phar code-coverage:upload --format=php-clover coverage.clover
