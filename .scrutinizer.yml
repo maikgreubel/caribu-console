@@ -2,14 +2,11 @@ checks:
     php:
         code_rating: true
         duplication: true
-		
 filter:
     paths: [lib/*]
     excluded_paths: [vendor/*, tests/*]
-	
 before_commands:
     - 'composer install --dev --prefer-source'
-	
 tools:
     external_code_coverage: true
     php_mess_detector: true
