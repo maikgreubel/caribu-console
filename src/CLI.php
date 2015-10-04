@@ -69,7 +69,8 @@ class CLI
     /**
      * Set a custom stdin channel
      *
-     * @param resource $stdin            
+     * @param resource $stdin
+     *            The channel
      * @return \Nkey\Caribu\Console\CLI
      */
     public function setStdIn($stdin)
@@ -81,7 +82,8 @@ class CLI
     /**
      * Set a custom stdout channel
      *
-     * @param resource $stdout            
+     * @param resource $stdout
+     *            The channel
      * @return \Nkey\Caribu\Console\CLI
      */
     public function setStdOut($stdout)
@@ -93,7 +95,8 @@ class CLI
     /**
      * Set a custom stderr channel
      *
-     * @param resource $stderr            
+     * @param resource $stderr
+     *            The channel
      * @return \Nkey\Caribu\Console\CLI
      */
     public function setStdErr($stderr)
@@ -132,7 +135,9 @@ class CLI
     /**
      * Write a line to stdout channel
      *
-     * @param string $line            
+     * @param string $line
+     *            The line to write, line break will be added
+     *            
      * @return \Nkey\Caribu\Console\CLI
      */
     public function writeStdoutLine($line)
@@ -144,7 +149,9 @@ class CLI
     /**
      * Write a line to stderr channel
      *
-     * @param string $line            
+     * @param string $line
+     *            The line to write, line break will be added
+     *            
      * @return \Nkey\Caribu\Console\CLI
      */
     public function writeStderrLine($line)
