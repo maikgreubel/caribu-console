@@ -8,7 +8,7 @@ PHP Console Class
 
 License is BSD 2.0 simplified
 
-Please use at least PHP 5.6.14.
+Please use at least PHP 5.6.14 for v1.0.0. Latest version only supports PHP 7.
 
 Why this high version of PHP?
 
