@@ -17,7 +17,6 @@ class DefaultParser implements Parser
     public function parse(string $input): ParsedCommand
     {
         $pattern = '#(?<cmd>^"[^"]*"|\S*) *(?<prm>.*)?#';
-        $sentencePattern = '#[^\s"\']+|"([^"]*)"|\'([^\']*)\'#';
         
         $matches = array();
         if (! preg_match($pattern, $input, $matches)) {
@@ -25,9 +24,27 @@ class DefaultParser implements Parser
         }
         $cmd = $matches['cmd'];
         
+        $args = $this->parseSentence($matches['prm']);
+        
+        $tmp = array();
+        foreach ($args as $arg) {
+            if (is_string($arg) && ! empty($arg)) {
+                $tmp[] = $arg;
+            }
+        }
+        $args = $tmp;
+        
+        return new ParsedCommand($cmd, $args);
+    }
+
+    private function parseSentence(string $param): array
+    {
+        $sentencePattern = '#[^\s"\']+|"([^"]*)"|\'([^\']*)\'#';
+        
         $args = array();
-        if (! preg_match_all($sentencePattern, $matches['prm'], $args)) {
-            $args = $matches['prm'];
+        
+        if (! preg_match_all($sentencePattern, $param, $args)) {
+            $args[] = $param;
         } else {
             $realArgs = array();
             foreach ($args[0] as $arg) {
@@ -39,21 +56,6 @@ class DefaultParser implements Parser
             $args = $realArgs;
         }
         
-        if (is_array($args)) {
-            $tmp = array();
-            foreach ($args as $arg) {
-                if (is_string($arg) && ! empty($arg)) {
-                    $tmp[] = $arg;
-                }
-            }
-            $args = $tmp;
-        } else 
-            if (is_string($args) && ! empty($args)) {
-                $args[] = $args;
-            } else {
-                $args = array();
-            }
-        
-        return new ParsedCommand($cmd, $args);
+        return $args;
     }
 }
