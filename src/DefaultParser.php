@@ -14,7 +14,7 @@ class DefaultParser implements Parser
      *
      * @see \Nkey\Caribu\Console\Parser::parse()
      */
-    public function parse($input)
+    public function parse(string $input): ParsedCommand
     {
         $pattern = '#(?<cmd>^"[^"]*"|\S*) *(?<prm>.*)?#';
         $sentencePattern = '#[^\s"\']+|"([^"]*)"|\'([^\']*)\'#';

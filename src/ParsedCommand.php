@@ -31,7 +31,7 @@ class ParsedCommand
      * @param array $args
      *            Optional arguments
      */
-    public function __construct($command, array $args = array())
+    public function __construct(string $command, array $args = array())
     {
         $this->command = $command;
         $this->args = $args;
@@ -42,7 +42,7 @@ class ParsedCommand
      *
      * @return string
      */
-    public function getCommand()
+    public function getCommand(): string
     {
         return $this->command;
     }
@@ -52,7 +52,7 @@ class ParsedCommand
      *
      * @return string[]
      */
-    public function getArguments()
+    public function getArguments(): array
     {
         return $this->args;
     }

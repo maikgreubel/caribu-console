@@ -52,7 +52,7 @@ class CLI
      * @param \Nkey\Caribu\Console\Parser $parser
      *            Optional command line parser (default instance of \Nkey\Caribu\Console\DefaultParser)
      */
-    public function __construct($prompt = "cli", Parser $parser = null)
+    public function __construct(string $prompt = "cli", Parser $parser = null)
     {
         $this->setPrompt($prompt);
         
@@ -73,7 +73,7 @@ class CLI
      *            The channel
      * @return \Nkey\Caribu\Console\CLI
      */
-    public function setStdIn($stdin)
+    public function setStdIn($stdin): CLI
     {
         $this->stdin = $stdin;
         return $this;
@@ -86,7 +86,7 @@ class CLI
      *            The channel
      * @return \Nkey\Caribu\Console\CLI
      */
-    public function setStdOut($stdout)
+    public function setStdOut($stdout): CLI
     {
         $this->stdout = $stdout;
         return $this;
@@ -99,7 +99,7 @@ class CLI
      *            The channel
      * @return \Nkey\Caribu\Console\CLI
      */
-    public function setStdErr($stderr)
+    public function setStdErr($stderr): CLI
     {
         $this->stderr = $stderr;
         return $this;
@@ -110,7 +110,7 @@ class CLI
      *
      * @return ParsedCommand The parsed command
      */
-    public function readLine()
+    public function readLine(): ParsedCommand
     {
         $this->writeStdout(sprintf("%s > ", $this->prompt));
         $input = stream_get_line($this->stdin, 4096, PHP_EOL);
@@ -125,7 +125,7 @@ class CLI
      *            
      * @return \Nkey\Caribu\Console\CLI Fluent interface instance
      */
-    public function writeStdout($output)
+    public function writeStdout(string $output): CLI
     {
         fprintf($this->stdout, "%s", $output);
         fflush($this->stdout);
@@ -140,7 +140,7 @@ class CLI
      *            
      * @return \Nkey\Caribu\Console\CLI
      */
-    public function writeStdoutLine($line)
+    public function writeStdoutLine(string $line): CLI
     {
         $this->writeStdout(sprintf("%s%s", $line, PHP_EOL));
         return $this;
@@ -154,7 +154,7 @@ class CLI
      *            
      * @return \Nkey\Caribu\Console\CLI
      */
-    public function writeStderrLine($line)
+    public function writeStderrLine(string $line): CLI
     {
         $this->writeStderr(sprintf("%s%s", $line, PHP_EOL));
         return $this;
@@ -168,7 +168,7 @@ class CLI
      *            
      * @return \Nkey\Caribu\Console\CLI Fluent interface instance
      */
-    public function writeStderr($output)
+    public function writeStderr(string $output): CLI
     {
         fprintf($this->stderr, "%s", $output);
         fflush($this->stderr);
@@ -183,7 +183,7 @@ class CLI
      *            
      * @return \Nkey\Caribu\Console\CLI Fluent interface instance
      */
-    public function setPrompt($prompt)
+    public function setPrompt(string $prompt): CLI
     {
         $this->prompt = $prompt;
         return $this;

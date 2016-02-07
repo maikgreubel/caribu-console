@@ -11,9 +11,10 @@ interface Parser
 
     /**
      * Parse the input into command and arguments
-     * 
+     *
      * @param string $input            
      * @throws \Nkey\Caribu\Console\ParserException
+     * @return ParsedCommand The parsed command
      */
-    public function parse($input);
+    public function parse(string $input): ParsedCommand;
 }
