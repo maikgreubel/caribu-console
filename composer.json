@@ -10,7 +10,7 @@
 	"name" : "nkey/caribu-console",
 	"type" : "library",
 	"description" : "CLI framework",
-	"license" : "BSD-2-Clause",
+	"license" : "BSD-3-Clause",
 	"require" : {
 		"php" : "~7.0"
 	},

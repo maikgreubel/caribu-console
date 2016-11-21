@@ -3,7 +3,8 @@
 	xsi:noNamespaceSchemaLocation="contrib/phpunit.xsd" colors="true"
 	convertErrorsToExceptions="true" convertNoticesToExceptions="true"
 	convertWarningsToExceptions="true" processIsolation="false"
-	stopOnFailure="false" bootstrap="vendor/autoload.php">
+	stopOnFailure="false" bootstrap="vendor/autoload.php"
+	beStrictAboutTestsThatDoNotTestAnything="true">
 	<testsuites>
 		<testsuite name="Caribu Console Test Suite">
 			<directory suffix="Test.php">./tests</directory>
