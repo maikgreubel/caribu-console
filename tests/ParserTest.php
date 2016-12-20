@@ -29,4 +29,13 @@ class ParserTest extends \PHPUnit_Framework_TestCase
         $this->assertEquals(3, count($parsedCommand->getArguments()));
         $this->assertEquals('Hello World', $parsedCommand->getArguments()[0]);
     }
+    
+    /**
+     * @expectedException \Nkey\Caribu\Console\ParserException
+     */
+    public function testParserException()
+    {
+    	$parser = new DefaultParser();
+    	$parsedCommand = $parser->parse('"printf "Hello World');
+    }
 }

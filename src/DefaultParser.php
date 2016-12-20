@@ -23,6 +23,9 @@ class DefaultParser implements Parser
             throw new ParserException("Could not parse command");
         }
         $cmd = $matches['cmd'];
+        if(empty($cmd) || strchr($cmd, '"') || strchr($cmd, "'")) {
+        	throw new ParserException("Could not parse command");
+        }
         
         $args = $this->parseSentence($matches['prm']);
         
