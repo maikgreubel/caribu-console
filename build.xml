@@ -7,6 +7,7 @@
     <property name="vendordir" value="${basedir}/vendor" />
     <property name="srcdir" value="${basedir}/src" />
     <property name="testsdir" value="${basedir}/tests"/>
+	<property name="phpbin" value="php"/>
     
     <!-- ========================================================================================================= -->
     
@@ -14,7 +15,7 @@
         <attribute name="failOnError" default="true"/>
         <element name="extArgs" optional="n"/>
         <sequential>
-            <exec executable="php" resultproperty="exitcode" failonerror="@{failOnError}">
+            <exec executable="${phpbin}" resultproperty="exitcode" failonerror="@{failOnError}">
                 <extArgs/>
             </exec>
         </sequential>
