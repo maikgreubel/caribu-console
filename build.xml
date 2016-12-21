@@ -97,7 +97,7 @@
 
         <!-- General source code syntax check -->
     <target name="lint" description="Perform syntax check of sourcecode files">
-        <apply executable="php" failonerror="false">
+        <apply executable="${phpbin}" failonerror="false">
             <arg value="-l" />
 
             <fileset dir="${srcdir}">
