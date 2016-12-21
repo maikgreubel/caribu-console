@@ -122,7 +122,7 @@ class CLI
      *
      * @param string $output
      *            The output to write
-     *            
+     *
      * @return \Nkey\Caribu\Console\CLI Fluent interface instance
      */
     public function writeStdout(string $output): CLI
@@ -137,7 +137,7 @@ class CLI
      *
      * @param string $line
      *            The line to write, line break will be added
-     *            
+     *
      * @return \Nkey\Caribu\Console\CLI
      */
     public function writeStdoutLine(string $line): CLI
@@ -151,7 +151,7 @@ class CLI
      *
      * @param string $line
      *            The line to write, line break will be added
-     *            
+     *
      * @return \Nkey\Caribu\Console\CLI
      */
     public function writeStderrLine(string $line): CLI
@@ -165,7 +165,7 @@ class CLI
      *
      * @param string $output
      *            The output to write
-     *            
+     *
      * @return \Nkey\Caribu\Console\CLI Fluent interface instance
      */
     public function writeStderr(string $output): CLI
@@ -180,7 +180,7 @@ class CLI
      *
      * @param string $prompt
      *            The prompt to set
-     *            
+     *
      * @return \Nkey\Caribu\Console\CLI Fluent interface instance
      */
     public function setPrompt(string $prompt): CLI

@@ -12,7 +12,7 @@ interface Parser
     /**
      * Parse the input into command and arguments
      *
-     * @param string $input            
+     * @param string $input The command string to parse
      * @throws \Nkey\Caribu\Console\ParserException
      * @return ParsedCommand The parsed command
      */
