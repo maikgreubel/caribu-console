@@ -19,7 +19,7 @@ class DefaultParser implements Parser
         $pattern = '#(?<cmd>^"[^"]*"|\S*) *(?<prm>.*)?#';
         
         $matches = array();
-        if (! preg_match($pattern, $input, $matches)) {
+        if (!preg_match($pattern, $input, $matches)) {
             throw new ParserException("Could not parse command");
         }
         $cmd = $matches['cmd'];
@@ -31,7 +31,7 @@ class DefaultParser implements Parser
         
         $tmp = array();
         foreach ($args as $arg) {
-            if (is_string($arg) && ! empty($arg)) {
+            if (is_string($arg) && !empty($arg)) {
                 $tmp[] = $arg;
             }
         }
@@ -46,7 +46,7 @@ class DefaultParser implements Parser
         
         $args = array();
         
-        if (! preg_match_all($sentencePattern, $param, $args)) {
+        if (!preg_match_all($sentencePattern, $param, $args)) {
             $args[] = $param;
         } else {
             $realArgs = array();

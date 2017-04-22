@@ -62,6 +62,8 @@
         <call-php>
             <extargs>
                 <arg value="composer.phar" />
+                <arg value="-v" />
+				<arg value="-n" />
                 <arg value="update" />
             </extargs>
         </call-php>
