@@ -3,7 +3,7 @@ namespace Nkey\Caribu\Console\Test;
 
 use Nkey\Caribu\Console\DefaultParser;
 
-class ParserTest extends \PHPUnit_Framework_TestCase
+class ParserTest extends \PHPUnit\Framework\TestCase
 {
 
     public function testSimple()

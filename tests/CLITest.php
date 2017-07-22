@@ -3,7 +3,7 @@ namespace Nkey\Caribu\Console\Test;
 
 use Nkey\Caribu\Console\CLI;
 
-class CLITest extends \PHPUnit_Framework_TestCase
+class CLITest extends \PHPUnit\Framework\TestCase
 {
 
     private $stdin;

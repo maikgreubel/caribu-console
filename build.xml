@@ -204,7 +204,7 @@
         description="Find coding standard violations using PHP_CodeSniffer and log result in XML format. Intended for usage within a continuous integration environment.">
         <call-php failOnError="false">
             <extargs>
-                <arg value="${vendordir}/squizlabs/php_codesniffer/scripts/phpcs"/>
+                <arg value="${vendordir}/squizlabs/php_codesniffer/bin/phpcs"/>
                 <arg value="--report=checkstyle" />
                 <arg value="--report-file=${logdir}/checkstyle.xml" />
                 <arg value="--standard=PSR2" />
