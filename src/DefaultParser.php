@@ -16,22 +16,12 @@ class DefaultParser implements Parser
      */
     public function parse(string $input): ParsedCommand
     {
-        $pattern = '#(?<cmd>^"[^"]*"|\S*) *(?<prm>.*)?#';
-        
-        $matches = array();
-        if (!preg_match($pattern, $input, $matches)) {
-            throw new ParserException("Could not parse command");
-        }
-        $cmd = $matches['cmd'];
-        if (empty($cmd) || strchr($cmd, '"') || strchr($cmd, "'")) {
-            throw new ParserException("Could not parse command");
-        }
-        
-        $args = $this->parseSentence($matches['prm']);
+        list ($cmd, $params) = $this->parseImpl($input);
+        $args = $this->parseSentence($params);
         
         $tmp = array();
         foreach ($args as $arg) {
-            if (is_string($arg) && !empty($arg)) {
+            if (is_string($arg) && ! empty($arg)) {
                 $tmp[] = $arg;
             }
         }
@@ -40,13 +30,39 @@ class DefaultParser implements Parser
         return new ParsedCommand($cmd, $args);
     }
 
+    /**
+     * Internal parsing of input
+     *
+     * @param string $input
+     * @throws ParserException
+     * @return array
+     */
+    private function parseImpl(string $input): array
+    {
+        $pattern = '#(?<cmd>^"[^"]*"|\S*) *(?<prm>.*)?#';
+        
+        $matches = array();
+        if (! preg_match($pattern, $input, $matches)) {
+            throw new ParserException("Could not parse command");
+        }
+        $cmd = $matches['cmd'];
+        if (empty($cmd) || strchr($cmd, '"') || strchr($cmd, "'")) {
+            throw new ParserException("Could not parse command");
+        }
+        
+        return array(
+            $cmd,
+            $matches['prm']
+        );
+    }
+
     private function parseSentence(string $param): array
     {
         $sentencePattern = '#[^\s"\']+|"([^"]*)"|\'([^\']*)\'#';
         
         $args = array();
         
-        if (!preg_match_all($sentencePattern, $param, $args)) {
+        if (! preg_match_all($sentencePattern, $param, $args)) {
             $args[] = $param;
         } else {
             $realArgs = array();
